@@ -1,0 +1,5 @@
+"0","vowels <- read_csv(""data/vowel_data.csv"")
+"
+"2","Error en read_csv(""data/vowel_data.csv""): 
+  no se pudo encontrar la función ""read_csv""
+"

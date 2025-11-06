@@ -1,0 +1,56 @@
+---
+title: "Programming assignment 3"
+format: gfm
+date: last-modified
+date-format: iso
+---
+
+##Load libraries and data
+```{r}
+library("tidyverse")
+library("untidydata")
+
+vowels <- read_csv("data/vowel_data.csv")
+```
+
+##Descriptive statistics 
+```{r}
+vowel_summary <- vowels %>%
+  group_by(vowel, language) %>%
+  summarize(
+    f1_avg = mean(f1_cent, na.rm = TRUE),
+    f1_sd  = sd(f1_cent, na.rm = TRUE),
+    f2_avg = mean(f2_cent, na.rm = TRUE),
+    f2_sd  = sd(f2_cent,  na.rm = TRUE),
+    tl_avg = mean(tl, na.rm = TRUE),
+    tl_sd  = sd(tl,na.rm = TRUE),
+    n = n()
+  )
+
+```
+
+##Plots
+```{r}
+vowels |>
+  ggplot(aes(x = vowel, y = tl, color = language)) +
+  geom_boxplot()
+
+vowels |>
+  ggplot(aes(x = vowel, y = f1_cent, color = language)) +
+  geom_boxplot()
+
+vowels |>
+  ggplot(aes(x = vowel, y = f2_cent, color = language)) +
+  geom_boxplot()
+
+```
+##Questions 
+
+1 Pregunta: Creo que esto funciona porque los valores de comienzo de la vocal y el final de la vocal están definidos en el codigo y esto permite calcular la duración No entiendo cuál es la función de los valores 0.2 y 0.35, etc.  
+
+2 Pregunta: El propósito general del script es hacer la extracción de medidas acústicas de las vocales segmentadas en cada lengua. Está dividido en secciones: primero abre el archivo de sonido y el TextGrid, luego recorre cada intervalo (cada vocal), obtiene los límites de inicio y fin, hace algo con los valores que no entendí bien y finalmente extrae valores como F1, F2 o intensidad en esos puntos, guardando los resultados en una tabla o archivo.
+
+3 Pregunta: Esta vez nos centramos en la media de los formantes y cómo cambian. La tarea anterior solo obtuvimos un valor para midpoint.
+
+Nota: Me ayude de chatgpt para responder a las preguntas y para hacer la primera parte entonces el chat creó el codigo con cosas que no entendí muy bien como na.rm = false que algo debe estar borrando o impidiendo. 
+
