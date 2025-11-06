@@ -53,6 +53,21 @@ vowel_summary <- vowels %>%
     `summarise()` has grouped output by 'vowel'. You can override using the
     `.groups` argument.
 
+``` r
+vowel_summary
+```
+
+    # A tibble: 6 × 9
+    # Groups:   vowel [3]
+      vowel language f1_avg f1_sd f2_avg f2_sd tl_avg tl_sd     n
+      <chr> <chr>     <dbl> <dbl>  <dbl> <dbl>  <dbl> <dbl> <int>
+    1 a     en         500.  211.  1378.  445.  1590. 1475.     6
+    2 a     sp         704.  263.  1614.  270.  1253.  662.     6
+    3 i     en         729.  248.  1705.  332.  1254.  610.     6
+    4 i     sp         760.  267.  1539.  204.  1585.  827.     6
+    5 u     en         602.  273.  1434.  407.   778.  563.     6
+    6 u     sp         609.  167.  1659.  138.   438.  149.     6
+
 \##Plots
 
 ``` r

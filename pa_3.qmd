@@ -27,6 +27,7 @@ vowel_summary <- vowels %>%
     n = n()
   )
 
+vowel_summary
 ```
 
 ##Plots
